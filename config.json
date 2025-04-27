@@ -1,0 +1,45 @@
+{
+    "root": {
+        "backgroundColor": "#1F274B",
+        "borderColor": "#F39326",
+        "textColor": "#F39326",
+        "fontSize": "16px"
+    },
+    "logo": {
+        "url": "./images/logo.svg",
+        "alt": "Nocturnal Bistro",
+        "name": "Nocturnal Bistro"
+    },
+    "description": {
+        "tc": "台北市 大安區 樂利路 30 號\n(六張犁站步行 7 分鐘)",
+        "en": "No. 30, Leli Rd, Da’an District, Taipei City, Taiwan 106\n(7m walk from Liuzhangli Station)"
+    },
+    "divider": {
+        "url": "./images/star-red.svg"
+    },
+    "links": [
+        {
+            "icon": "./images/icon-map.svg",
+            "alt": "MAP",
+            "text": "地圖 MAP",
+            "link": "https://maps.app.goo.gl/AyTzNrdHv3YmPZXK7",
+            "target": "_blank"
+        },
+        {
+            "icon": "./images/icon-menu.svg",
+            "alt": "MENU",
+            "text": "菜單 MENU",
+            "link": "./assets/menu.pdf",
+            "target": "_blank"
+        }
+    ],
+    "socials": [
+        {
+            "icon": "./images/icon-instagram.svg",
+            "name": "nocturnal.bistro",
+            "alt": "Instagram",
+            "link": "https://www.instagram.com/nocturnal.bistro/",
+            "target": "_blank"
+        }
+    ]
+}

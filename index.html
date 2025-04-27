@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nocturnal Bistro</title>
+
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script>
+        $(function() {
+            var config = {};
+
+            $(".year").text(new Date().getFullYear());
+
+            $.getJSON('./config.json', function(data) {
+                $.each(data.root, function(key, value){
+                    document.documentElement.style.setProperty('--'+key, value);
+                });
+                $(".name").text(data.logo.name);
+                $(".logo").append('<img src="'+data.logo.url+'" alt="'+data.logo.alt+'" />');
+                $(".divider").append('<img src="'+data.divider.url+'" alt="-" />');
+                $(".description .tc").text(data.description.tc);
+                $(".description .en").text(data.description.en);
+
+                $.each(data.links, function(i){
+                    $('.links').append('<a href="'+data.links[i].link+'" alt="'+data.links[i].alt+'" target="'+data.links[i].target+'" class="button"><img src="'+data.links[i].icon+'" class="button-icon" alt="'+data.links[i].text+'" /><span class="button-text">'+data.links[i].text+'</span></a>')
+                });
+
+                $.each(data.socials, function(i){
+                    $('.links').append('<a href="'+data.socials[i].link+'" alt="'+data.socials[i].alt+'" target="'+data.socials[i].target+'" class="social"><img src="'+data.socials[i].icon+'" class="social-icon" alt="" /><span class="social-name">'+data.socials[i].name+'</span></a>')
+                });
+            });
+        });
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Noto+Sans+TC:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <header class="header">
+        <div class="deco"></div>
+    </header>
+    <div class="content">
+        <div class="logo"></div>
+        <div class="description">
+            <div class="tc"></div>
+            <div class="en"></div>
+        </div>
+        <div class="divider"></div>
+        <div class="links"></div>
+        <div class="socials"></div>
+    </div>
+    <footer class="footer">
+        <div class="copyright">&copy; <span class="year"></span> <span class="name"></span></div>
+        <div class="deco"></div>
+    </footer>
+
+
+    <style>
+        :root {
+            /* --borderColor: #F39326; */
+        }
+        html, body, * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Dosis", "Noto Sans TC", sans-serif;
+        }
+        body {
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            color: var(--textColor);
+            font-size: var(--fontSize);
+            background-color: var(--backgroundColor);
+        }
+        img {
+            width: 100%;
+        }
+        .deco {
+            width: 100%;
+            height: 1.5rem;
+            padding: .25rem;
+            border-top: 1px solid #FFF;
+            border-bottom: 1px solid #FFF;
+            background-image: url("./images/star-white.svg");
+            background-repeat: space;
+            background-position: center;
+            background-size: contain;
+        }
+        .content {
+            padding: 1.25rem 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            flex: 1;
+        }
+        .logo {
+            margin-bottom: .5rem;
+            width: 40%;
+            max-width: 180px;
+        }
+        .description {
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+            margin: .5rem auto;
+            white-space: pre-line;
+            text-align: center;
+        }
+        .divider {
+            margin: .5rem auto;
+        }
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            margin: .5rem auto;
+            width: 100%;
+            max-width: 480px;
+        }
+        a.button, a.button:hover, a.button:active, a.button:visited {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: .75rem;
+            padding: .5rem 1.25rem;
+            width: 100%;
+            border: 1px solid var(--borderColor);
+            color: #F39326;
+            border-radius: 9999rem;
+            text-decoration: none;
+        }
+        .button-icon {
+            width: 1.25rem;
+        }
+        .button-text {
+            flex: 1;
+            text-align: center;
+        }
+        .socials {
+            display: flex;
+            flex-direction: row;
+            gap: 1.5rem;
+            justify-content: center;
+            align-items: center;
+        }
+        a.social, a.social:hover, a.social:active, a.social:visited {
+            display: flex;
+            flex-direction: row;
+            gap: .5rem;
+            justify-content: center;
+            align-items: center;
+            font-size: .875rem;
+            color: var(--textColor);
+            text-decoration: none;
+        }
+        .social-icon {
+            width: 1.25rem;
+        }
+        .copyright {
+            margin: 1rem auto;
+            text-align: center;
+            color: #FFF;
+        }
+    </style>
+
+</body>
+</html>
