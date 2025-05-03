@@ -29,7 +29,7 @@
             "icon": "./images/icon-menu.svg",
             "alt": "MENU",
             "text": "菜單 MENU",
-            "link": "./assets/menu.pdf",
+            "link": "./assets/menu.pdf?v=202505",
             "target": "_blank"
         }
     ],
