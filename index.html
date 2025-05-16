@@ -20,25 +20,26 @@
     <script>
         $(function() {
             var config = {};
+            var cacheDeined = '?v='+Date.now();
 
             $(".year").text(new Date().getFullYear());
 
-            $.getJSON('./config.json', function(data) {
+            $.getJSON('./config.json'+cacheDeined, function(data) {
                 $.each(data.root, function(key, value){
                     document.documentElement.style.setProperty('--'+key, value);
                 });
                 $(".name").text(data.logo.name);
-                $(".logo").append('<img src="'+data.logo.url+'" alt="'+data.logo.alt+'" />');
-                $(".divider").append('<img src="'+data.divider.url+'" alt="-" />');
+                $(".logo").append('<img src="'+data.logo.url+cacheDeined+'" alt="'+data.logo.alt+'" />');
+                $(".divider").append('<img src="'+data.divider.url+cacheDeined+'" alt="-" />');
                 $(".description .tc").text(data.description.tc);
                 $(".description .en").text(data.description.en);
 
                 $.each(data.links, function(i){
-                    $('.links').append('<a href="'+data.links[i].link+'" alt="'+data.links[i].alt+'" target="'+data.links[i].target+'" class="button"><img src="'+data.links[i].icon+'" class="button-icon" alt="'+data.links[i].text+'" /><span class="button-text">'+data.links[i].text+'</span></a>')
+                    $('.links').append('<a href="'+data.links[i].link+'" alt="'+data.links[i].alt+'" target="'+data.links[i].target+'" class="button"><img src="'+data.links[i].icon+cacheDeined+'" class="button-icon" alt="'+data.links[i].text+'" /><span class="button-text">'+data.links[i].text+'</span></a>')
                 });
 
                 $.each(data.socials, function(i){
-                    $('.links').append('<a href="'+data.socials[i].link+'" alt="'+data.socials[i].alt+'" target="'+data.socials[i].target+'" class="social"><img src="'+data.socials[i].icon+'" class="social-icon" alt="" /><span class="social-name">'+data.socials[i].name+'</span></a>')
+                    $('.links').append('<a href="'+data.socials[i].link+'" alt="'+data.socials[i].alt+'" target="'+data.socials[i].target+'" class="social"><img src="'+data.socials[i].icon+cacheDeined+'" class="social-icon" alt="" /><span class="social-name">'+data.socials[i].name+'</span></a>')
                 });
             });
         });
